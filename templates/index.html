@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Market Place</title>
+</head>
+<body>
+    <h1>Welcome To Our Local Market Place</h1>
+    {% if request.user.is_authenticated %}
+    <p>Hello <b>{{request.user.username}}</b></p>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+    {% endif %}
+
+    {% if request.user.role == 'vendor' %}
+    <p><a href="{% url 'add-product' %}">Add Your Products</a></p>
+    {% endif %}
+</body>
+</html>

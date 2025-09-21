@@ -1,0 +1,9 @@
+<h1>Our Products</h1>
+
+<ul>
+    {% for product in products %}
+        <li><b>{{product.name}}</b> by <b>{{product.vendor.username}}</b> at ${{product.price}} </li>
+        {% empty %}
+        <li>No Product Available</li>
+    {% endfor %}
+</ul>

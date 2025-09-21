@@ -1,0 +1,20 @@
+
+<h1>Add Your Product Here</h1>
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% if request.user.role != 'vendor' %}
+        <p>You are not allowed to do this</p>
+    {% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button>Register</button>
+    </form>
+    {% endif %}
+</div>
