@@ -1,0 +1,7 @@
+<h1>Your Orders</h1>
+
+<ul>
+    {% for order in orders %}
+        <li>You Ordered For: {{order.product.name}} Vendor: {{order.product.vendor.username}}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,11 @@
+<h1>Confirm Order</h1>
+
+<p>Are you sure You want to Order for {{product.name}} ?</p>
+<div>
+    <form action="{% url 'order-product' product.id %}" method="post">
+        {% csrf_token %}
+        <input type="number" name="quantity" id="quantity" placeholder="Enter Quantity" min="1" required>
+        <input type="submit" value="Confirm">
+    </form>
+</div>
+<p><a href="{{referer}}">Revert</a></p>

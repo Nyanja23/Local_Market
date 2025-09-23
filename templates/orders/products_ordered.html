@@ -1,0 +1,9 @@
+<h1>Here Are the Products They Ordered For</h1>
+
+<ul>
+    {% for product in products %}
+        <li>{{product.customer}} Ordered For <b>{{product.product.name}} </b> Quantity <b>{{product.quantity}}</b>
+            Amount To Pay: $ <b>{{product.amount_pay}}</b>
+        </li>
+    {% endfor %}
+</ul>

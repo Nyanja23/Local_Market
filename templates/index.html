@@ -7,13 +7,26 @@
 </head>
 <body>
     <h1>Welcome To Our Local Market Place</h1>
+
     {% if request.user.is_authenticated %}
     <p>Hello <b>{{request.user.username}}</b></p>
-    <p><a href="{% url 'logout' %}">Logout</a></p>
+    <div class="container">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button>Logout</button>
+        </form>
+    </div>
+    <!-- <p><a href="{% url 'logout' %}">Logout</a></p> -->
     {% endif %}
 
     {% if request.user.role == 'vendor' %}
     <p><a href="{% url 'add-product' %}">Add Your Products</a></p>
+
+    <p><a href="{% url 'ordered-products' %}">See Who Ordered For Your Products</a></p>
+
+    {% else %}
+    <p><a href="{% url 'products-list' %}">See Available Products</a></p>
+    <p><a href="{% url 'my-orders' %}">See Your Orders</a></p>
     {% endif %}
 </body>
 </html>

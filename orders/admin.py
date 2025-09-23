@@ -3,8 +3,8 @@ from .models import Order, OrderProduct
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'product', 'date_created','complete_status')
-    search_fields = ('customer','product')
+    list_display = ('customer', 'date_created','complete_status')
+    search_fields = ('customer',)
 
 @admin.register(OrderProduct)
 class OrderProductAdmin(admin.ModelAdmin):

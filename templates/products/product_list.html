@@ -1,9 +1,38 @@
+<ul>
+    {% if request.user.role == 'vendor' %}
+
+    <h1>Your Products</h1>
+    <p><a href="">See Pending Orders</a></p>
+
+    {% for product in products %}
+
+        {% if product.vendor.username == request.user.username %}
+            <li><b>{{product.name}}</b> by <b>{{product.vendor.username}}</b> at ${{product.price}} </li>
+     
+        {% endif %}
+
+        {% empty %}
+        <p>No Products Available</p>
+    {% endfor %}
+
+    {% else %}
 <h1>Our Products</h1>
 
-<ul>
-    {% for product in products %}
-        <li><b>{{product.name}}</b> by <b>{{product.vendor.username}}</b> at ${{product.price}} </li>
-        {% empty %}
-        <li>No Product Available</li>
-    {% endfor %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+
+        {% endif %}
+
+        <u>
+             {% for product in products %}
+                 <li><b>{{product.name}}</b> by <b>{{product.vendor.username}}</b> at ${{product.price}} 
+                    <a href="{% url 'confirm-order' product.id %}">Order For This Product</a>
+                   
+                </li> 
+            {% endfor %}
+        </u>
+       
+    {% endif %}
 </ul>
